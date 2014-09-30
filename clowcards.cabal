@@ -1,0 +1,35 @@
+Name:                clowcards
+Version:             0.1
+Cabal-version:       >=1.16.0
+License:             BSD3
+License-File:        LICENSE.txt
+Author:              Jason Bertsche
+Maintainer:          jason.bertsche@gmail.com
+Homepage:            http://github.com/TheBizzle
+Category:            Demo
+Synopsis:            A Heroscape random card drafter
+Description:         A Heroscape random card drafter
+Build-type:          Simple
+
+source-repository head
+  type:     git
+  location: git@github.com:TheBizzle/ClowCards-Haskell.git
+
+library
+  hs-source-dirs:   src
+  exposed-modules:
+  default-language: Haskell2010
+  build-depends:
+  GHC-Options:
+    -Wall
+    -fno-warn-name-shadowing
+
+test-suite tests
+  type:             exitcode-stdio-1.0
+  main-is:          Main.hs
+  hs-source-dirs:   test
+  default-language: Haskell2010
+  build-depends:
+    HUnit                      >= 1.2,
+    test-framework             >= 0.8,
+    test-framework-hunit       >= 0.3
