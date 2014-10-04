@@ -1,0 +1,12 @@
+{
+  "name": "ClowCards-Haskell",
+  "description": "A Haskell/PureScript implementation of a Heroscape card random drafter",
+  "repository": "https://github.com/TheBizzle/ClowCards-Haskell",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "lodash":           "2.4.1",
+    "gulp":             "3.8.8",
+    "gulp-purescript":  "0.0.10"
+  }
+}
