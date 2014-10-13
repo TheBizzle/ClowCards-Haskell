@@ -10,7 +10,7 @@ Category:            Web
 Synopsis:            A Heroscape random card drafter
 Description:         A Heroscape random card drafter
 Stability:           Experimental
-Build-type:          Simple
+Build-type:          Custom
 
 source-repository head
   type:     git
