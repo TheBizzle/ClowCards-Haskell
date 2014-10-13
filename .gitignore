@@ -7,3 +7,5 @@
 /.projections.json
 /dist
 /log
+/node_modules
+/target
