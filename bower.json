@@ -1,0 +1,26 @@
+{
+  "name": "clowcards",
+  "version": "0.1.0",
+  "homepage": "https://github.com/TheBizzle/ClowCards-Haskell",
+  "authors": [
+    "TheBizzle <jason.bertsche@gmail.com>"
+  ],
+  "description": "Heroscape card drafter",
+  "keywords": [
+    "heroscape",
+    "toy",
+    "purescript"
+  ],
+  "license": "BSD3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-strings": "0.3.0"
+  }
+}

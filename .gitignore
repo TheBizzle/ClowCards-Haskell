@@ -5,6 +5,7 @@
 
 /.ghci
 /.projections.json
+/bower_components
 /dist
 /log
 /node_modules

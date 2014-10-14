@@ -11,11 +11,12 @@ main = defaultMainWithHooks simpleUserHooks { buildHook = buildJS, cleanHook = c
 buildJS :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -> IO ()
 buildJS _ _ _ _ = do
   _ <- readProcess "npm"   ["install"] []
-  _ <- readProcess "gulp" ["build"]    []
+  _ <- readProcess "bower" ["update"]  []
+  _ <- readProcess "gulp"  ["build"]   []
   return ()
 
 cleanJS :: PackageDescription -> () -> UserHooks -> CleanFlags -> IO ()
 cleanJS _ _ _ _ = do
-  _ <- readProcess "gulp" ["clean"]                 []
-  _ <- readProcess "rm"   ["-rf", "./node_modules"] []
+  _ <- readProcess "gulp" ["clean"] []
+  _ <- readProcess "rm"   ["-rf", "./node_modules/", "./bower_components/"] []
   return ()
