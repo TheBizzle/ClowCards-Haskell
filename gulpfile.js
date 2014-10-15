@@ -21,8 +21,8 @@ gulp.task('less', function() {
 });
 
 gulp.task('purescript', function() {
-  return gulp.src("bower_components/**/src/**/*.purs", "src/client/js/*.purs")
-             .pipe(purescript.psc())
+  return gulp.src(["bower_components/**/src/**/*.purs", "src/client/js/**/*.purs"])
+             .pipe(purescript.psc({main: true}))
              .pipe(rename(function (path) { path.basename = "index" }))
              .pipe(gulp.dest("target/js"));
 });
