@@ -1,25 +1,5 @@
-module Main (main, slugify, stripMargin, stripMarginSimple) where
+module Main (main) where
 
-import Data.Foldable(Foldable, foldl)
-import Data.String(toLower)
-import Data.String.Regex(parseFlags, regex, Regex(..), replace)
-import Data.Tuple(Tuple(..))
+import Debug.Trace
 
-main = Debug.Trace.trace "hello"
-
-slugify :: String -> String
-slugify str = foldl foldFunc lowered replacements
-  where
-    lowered      = toLower str
-    g            = parseFlags "g"
-    replacements = [(Tuple (regex "['.,]" g) ""), (Tuple (regex " " g) "-")]
-    foldFunc     = \acc (Tuple reg sub) -> replace reg sub acc
-
-stripMargin :: String -> String -> String
-stripMargin str delim = replace (regex r flags) "\n" str
-  where
-    flags = parseFlags "g"
-    r     = "(?:^|\n[ \t]*)" ++ delim
-
-stripMarginSimple :: String -> String
-stripMarginSimple = flip stripMargin "\\|"
+main = trace "hello"
