@@ -5,6 +5,7 @@
 
 /.ghci
 /.projections.json
+/.psci*
 /bower_components
 /dist
 /log
