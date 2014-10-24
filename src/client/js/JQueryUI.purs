@@ -5,7 +5,7 @@ import Control.Monad.JQuery(DOM(..), JQuery(..))
 
 -- .accordion(config)
 foreign import accordion
-  "function(config) { \
+  "function accordion(config) { \
   \  return function(ob) { \
   \    return function() { \
   \      ob.accordion(config); \
@@ -15,7 +15,7 @@ foreign import accordion
 
 -- .button()
 foreign import button
-  "function(ob) { \
+  "function button(ob) { \
   \  return function() { \
   \    ob.button(); \
   \  }; \
@@ -23,7 +23,7 @@ foreign import button
 
 -- .buttonset()
 foreign import buttonset
-  "function(ob) { \
+  "function buttonset(ob) { \
   \  return function() { \
   \    ob.buttonset(); \
   \  }; \
@@ -31,7 +31,7 @@ foreign import buttonset
 
 -- .change()
 foreign import change
-  "function(ob) { \
+  "function change(ob) { \
   \  return function() { \
   \    ob.change(); \
   \  }; \
@@ -39,7 +39,7 @@ foreign import change
 
 -- .click(f)
 foreign import click
-  "function(f) { \
+  "function click(f) { \
   \  return function(ob) { \
   \    return function() { \
   \      ob.click(f); \
@@ -49,7 +49,7 @@ foreign import click
 
 -- .each(f)
 foreign import each
-  "function(f) { \
+  "function each(f) { \
   \  return function(ob) { \
   \    return function() { \
   \      ob.each(f); \
@@ -59,7 +59,7 @@ foreign import each
 
 -- x[0].checked = !x[0].checked
 foreign import flipChecked
-  "function(ob) { \
+  "function flipChecked(ob) { \
   \  return function () { \
   \    ob[0].checked = !ob[0].checked; \
   \  }; \
@@ -67,7 +67,7 @@ foreign import flipChecked
 
 -- .button('refresh')
 foreign import refreshButton
-  "function(ob) { \
+  "function refreshButton(ob) { \
   \  return function() { \
   \    ob.button('refresh'); \
   \  }; \
@@ -75,7 +75,7 @@ foreign import refreshButton
 
 -- .siblings(filterStr)
 foreign import siblings
-  "function(filterStr) { \
+  "function siblings(filterStr) { \
   \  return function(ob) { \
   \    return function() { \
   \      ob.siblings(filterStr); \
@@ -85,7 +85,7 @@ foreign import siblings
 
 -- .spinner()
 foreign import spinner
-  "function(ob) { \
+  "function spinner(ob) { \
   \  return function() { \
   \    ob.spinner(); \
   \  }; \
@@ -93,7 +93,7 @@ foreign import spinner
 
 -- .tabs()
 foreign import tabs
-  "function(ob) { \
+  "function tabs(ob) { \
   \  return function() { \
   \    ob.tabs(); \
   \  }; \
@@ -101,7 +101,7 @@ foreign import tabs
 
 -- .val(newVal)
 foreign import val
-  "function(newVal) { \
+  "function val(newVal) { \
   \  return function(ob) { \
   \    return function() { \
   \      ob.val(newVal); \
