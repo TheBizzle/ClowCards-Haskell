@@ -140,3 +140,15 @@ foreign import selectThis
     return jQuery(this);
   }
   """ :: forall eff. Eff (dom :: DOM | eff) JQuery
+
+-- .attr(str)
+foreign import attrStr
+  """
+  function attrStr(str) {
+    return function(ob) {
+      return function () {
+        return ob.attr(str);
+      };
+    };
+  }
+  """ :: forall eff . String -> JQuery -> Eff (dom :: DOM | eff) String
