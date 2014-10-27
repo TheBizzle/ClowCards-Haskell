@@ -51,11 +51,11 @@ foreign import click
   function click(f) {
     return function(ob) {
       return function() {
-        ob.click(f);
+        ob.click(function () { return f(jQuery(this))(); });
       };
     };
   }
-  """ :: forall eff a. (Unit -> Eff eff a) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+  """ :: forall eff a. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .each(f)
 foreign import each
@@ -63,11 +63,11 @@ foreign import each
   function each(f) {
     return function(ob) {
       return function() {
-        ob.each(f);
+        ob.each(function() { return f(jQuery(this))(); });
       };
     };
   }
-  """ :: forall eff a. (Unit -> Eff eff a) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+  """ :: forall eff a. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- x[0].checked = !x[0].checked
 foreign import flipChecked
