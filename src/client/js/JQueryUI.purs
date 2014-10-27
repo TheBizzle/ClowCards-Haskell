@@ -133,14 +133,6 @@ foreign import val
   }
   """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
--- $(this)
-foreign import selectThis
-  """
-  function selectThis() {
-    return jQuery(this);
-  }
-  """ :: forall eff. Eff (dom :: DOM | eff) JQuery
-
 -- .attr(str)
 foreign import attrStr
   """
