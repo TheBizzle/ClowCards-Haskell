@@ -143,4 +143,4 @@ foreign import attrStr
       };
     };
   }
-  """ :: forall eff . String -> JQuery -> Eff (dom :: DOM | eff) String
+  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) String
