@@ -6,6 +6,10 @@ import Control.Monad.JQuery
 import JQueryUI
 
 main = ready $ do
+  initJQUI
+
+initJQUI :: forall eff. Eff (dom :: DOM | eff) JQuery
+initJQUI = do
   select ".collapsible-accordion" >>= (accordion { heightStyle: "fill" })
   select ".ui-spinner-button"     >>= click spinAButton
   foreach ".ui-button"    mkButton
