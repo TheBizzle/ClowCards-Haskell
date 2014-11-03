@@ -11,7 +11,7 @@ foreign import accordion
   function accordion(config) {
     return function(ob) {
       return function() {
-        ob.accordion(config);
+        return ob.accordion(config);
       };
     };
   }
@@ -22,7 +22,7 @@ foreign import button
   """
   function button(ob) {
     return function() {
-      ob.button();
+      return ob.button();
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
@@ -32,7 +32,7 @@ foreign import buttonset
   """
   function buttonset(ob) {
     return function() {
-      ob.buttonset();
+      return ob.buttonset();
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
@@ -42,7 +42,7 @@ foreign import change
   """
   function change(ob) {
     return function() {
-      ob.change();
+      return ob.change();
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
@@ -53,7 +53,7 @@ foreign import click
   function click(f) {
     return function(ob) {
       return function() {
-        ob.click(function () { return f(jQuery(this))(); });
+        return ob.click(function () { return f(jQuery(this))(); });
       };
     };
   }
@@ -65,7 +65,7 @@ foreign import each
   function each(f) {
     return function(ob) {
       return function() {
-        ob.each(function() { return f(jQuery(this))(); });
+        return ob.each(function() { return f(jQuery(this))(); });
       };
     };
   }
@@ -97,7 +97,7 @@ foreign import siblings
   function siblings(filterStr) {
     return function(ob) {
       return function() {
-        ob.siblings(filterStr);
+        return ob.siblings(filterStr);
       };
     };
   }
@@ -108,7 +108,7 @@ foreign import spinner
   """
   function spinner(ob) {
     return function() {
-      ob.spinner();
+      return ob.spinner();
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
@@ -118,7 +118,7 @@ foreign import tabs
   """
   function tabs(ob) {
     return function() {
-      ob.tabs();
+      return ob.tabs();
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
@@ -129,7 +129,7 @@ foreign import val
   function val(newVal) {
     return function(ob) {
       return function() {
-        ob.val(newVal);
+        return ob.val(newVal);
       };
     };
   }
