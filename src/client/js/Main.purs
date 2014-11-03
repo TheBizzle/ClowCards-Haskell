@@ -3,6 +3,7 @@ module Main (main) where
 import Control.Monad.Eff
 import Control.Monad.JQuery
 
+import DOM(DOM(..))
 import JQueryUI
 
 main = ready $ do

@@ -1,7 +1,9 @@
 module JQueryUI where
 
 import Control.Monad.Eff
-import Control.Monad.JQuery(DOM(..), JQuery(..))
+import Control.Monad.JQuery(JQuery(..))
+
+import DOM(DOM(..))
 
 -- .accordion(config)
 foreign import accordion

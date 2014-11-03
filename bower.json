@@ -23,7 +23,7 @@
   "dependencies": {
     "purescript-arrays":  "0.2.1",
     "purescript-foldable-traversable": "0.1.3",
-    "purescript-jquery":  "bfdb3e24bf",
+    "purescript-jquery":  "0.2.1",
     "purescript-maps":    "0.0.5",
     "purescript-maybe":   "0.2.1",
     "purescript-strings": "0.2.1",
