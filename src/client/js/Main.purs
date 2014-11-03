@@ -1,10 +1,10 @@
 module Main (main) where
 
-import Control.Monad.Eff
-import Control.Monad.JQuery
+import Control.Monad.Eff(Eff(..))
+import Control.Monad.JQuery(JQuery(..), ready, select)
 
 import DOM(DOM(..))
-import JQueryUI
+import JQueryUI(accordion, attrStr, button, buttonset, change, click, each, flipChecked, refreshButton, siblings, spinner, tabs, val)
 
 main = ready $ do
   initJQUI

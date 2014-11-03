@@ -1,6 +1,6 @@
 module JQueryUI where
 
-import Control.Monad.Eff
+import Control.Monad.Eff(Eff(..))
 import Control.Monad.JQuery(JQuery(..))
 
 import DOM(DOM(..))
