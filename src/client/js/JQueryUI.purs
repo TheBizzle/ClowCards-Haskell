@@ -81,6 +81,18 @@ foreign import flipChecked
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
 
+-- .load(f)
+foreign import load
+  """
+  function load(f) {
+    return function (ob) {
+      return function () {
+        return ob.load(function() { return f(jQuery(this)); });
+      };
+    }
+  }
+  """ :: forall eff. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+
 -- .button('refresh')
 foreign import refreshButton
   """
@@ -90,6 +102,18 @@ foreign import refreshButton
     };
   }
   """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
+
+-- .replaceWith(elem)
+foreign import replaceWith
+  """
+  function replaceWith(elem) {
+    return function (ob) {
+      return function () {
+        return ob.replaceWith(elem);
+      };
+    }
+  }
+  """ :: forall eff. JQuery -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .siblings(filterStr)
 foreign import siblings
