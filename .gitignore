@@ -10,5 +10,5 @@
 /dist
 /log
 /node_modules
-/psc.tix
+/psc*.tix
 /target
