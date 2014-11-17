@@ -1,4 +1,4 @@
-module AppState where
+module AppState(AppState(..)) where
 
 import Control.Monad.JQuery(JQuery(..))
 
