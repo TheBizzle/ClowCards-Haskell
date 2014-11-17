@@ -3,7 +3,7 @@ module Element (genCardCheckbox, genCardEntryColumn, genPlayerRow) where
 import Control.Monad.Eff(Eff(..))
 import Control.Monad.JQuery(append, create, find, JQuery(..), remove, removeClass)
 
-import Data.String(toLower)
+import Data.String(toLower, trim)
 
 import DOM(DOM(..))
 import JQueryUI(attrStr, click, load, replaceWith)
@@ -16,7 +16,7 @@ genCardCheckbox cardname isEnabled = create html
   where
     name    = slugify cardname
     checked = if isEnabled then " checked" else ""
-    html    =
+    html    = trim $
       """
       <input type="checkbox" id='check-""" ++ name ++ """' name="version" class='check-button version-button dynamic-check-button'""" ++ checked ++ """/>
       <label for='check-""" ++ name ++ """' class="unselectable check-label dynamic-check-label">""" ++ cardname ++ """</label>
@@ -36,7 +36,7 @@ genPlayerRow name id imgID onClickF = do
     findAndReplace ".placeholder" clickableImgJQ elemJQ
   where
     imgHTML      = "<img id='" ++ imgID ++ "' src='/assets/images/index/priority/simple-x.png' class='player-button'>"
-    elemHTML =
+    elemHTML = trim $
       """
       <table id='""" ++ id ++ """' class="player-table round-bordered card-row has-headroom">
         <tr>
@@ -75,7 +75,7 @@ genCardEntry name id url faction = do
   where
     imgHolderClass  = ".img-placeholder"
     textHolderClass = ".text-placeholder"
-    html            =
+    html            = trim $
       """
       <div class='entry-wrapper horiz-centered-children'>
         <div class='""" ++ imgHolderClass ++ """'></div>
@@ -97,7 +97,7 @@ genCardImage id url faction = do
 genCardText :: forall eff. String -> Eff (dom :: DOM | eff) JQuery
 genCardText text = create html
   where
-    html =
+    html = trim $
       """
       <div class='entry-text-outer'>
         <div class='entry-text-middle'>
@@ -127,7 +127,7 @@ genLoadingAnim :: forall eff. String -> String -> Eff (dom :: DOM | eff) JQuery
 genLoadingAnim idBasis bgClass = create html
   where
     id   = idBasis ++ "-loading"
-    html =
+    html = trim $
       """
       <div id='""" ++ id ++ """' class='entry-image """ ++ bgClass ++ """fade-anim-wrapper'>
         <div class="fade-anim-circle fade-anim-1"></div>
