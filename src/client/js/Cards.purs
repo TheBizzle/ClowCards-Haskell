@@ -1,123 +1,131 @@
-module Cards where
+module Cards(Card(..), cards, Faction(..)) where
 
-cards =
-  {
-    "Agent Carr":                  { enabled: true,  faction: "Vydar"   },
-    "Airborne Elite":              { enabled: true,  faction: "Jandar"  },
-    "Alastair MacDirk":            { enabled: true,  faction: "Jandar"  },
-    "Anubian Wolves":              { enabled: true,  faction: "Utgar"   },
-    "Aphotia":                     { enabled: true,  faction: "Choobar" },
-    "Arkmer":                      { enabled: true,  faction: "Ullar"   },
-    "Arrow Gruts":                 { enabled: true,  faction: "Utgar"   },
-    "Aubrien Archers":             { enabled: true,  faction: "Ullar"   },
-    "Basilisk":                    { enabled: false, faction: "Choobar" },
-    "Blade Gruts":                 { enabled: true,  faction: "Utgar"   },
-    "Blastatrons":                 { enabled: true,  faction: "Vydar"   },
-    "Braxas":                      { enabled: true,  faction: "Vydar"   },
-    "Brunak":                      { enabled: true,  faction: "Utgar"   },
-    "Chardris":                    { enabled: true,  faction: "Ullar"   },
-    "Charos":                      { enabled: true,  faction: "Ullar"   },
-    "Concan":                      { enabled: true,  faction: "Jandar"  },
-    "Crixus":                      { enabled: true,  faction: "Einar"   },
-    "Crucian":                     { enabled: true,  faction: "Choobar" },
-    "Deadeye Dan":                 { enabled: true,  faction: "Ullar"   },
-    "Deadwood":                    { enabled: true,  faction: "Choobar" },
-    "Deathstalkers":               { enabled: true,  faction: "Utgar"   },
-    "Deathwalker 7000":            { enabled: true,  faction: "Utgar"   },
-    "Deathwalker 8000":            { enabled: true,  faction: "Utgar"   },
-    "Deathwalker 9000":            { enabled: true,  faction: "Utgar"   },
-    "Dumutef Guard":               { enabled: true,  faction: "Utgar"   },
-    "Dund":                        { enabled: true,  faction: "Vydar"   },
-    "Elemental Golems":            { enabled: true,  faction: "Vydar"   },
-    "Elite Onyx Vipers":           { enabled: true,  faction: "Ullar"   },
-    "Emirroon":                    { enabled: true,  faction: "Ullar"   },
-    "Festus":                      { enabled: true,  faction: "Jacob"   },
-    "Finn":                        { enabled: true,  faction: "Jandar"  },
-    "Firefly":                     { enabled: true,  faction: "Ullar"   },
-    "Gladiatrons":                 { enabled: true,  faction: "Vydar"   },
-    "Gorillinators":               { enabled: true,  faction: "Vydar"   },
-    "Grimnak":                     { enabled: true,  faction: "Utgar"   },
-    "Grok Riders":                 { enabled: true,  faction: "Utgar"   },
-    "Guilty McCreech":             { enabled: true,  faction: "Einar"   },
-    "Izumi Samurai":               { enabled: true,  faction: "Einar"   },
-    "James Murphy":                { enabled: true,  faction: "Vydar"   },
-    "Johnny 'Shotgun' Sullivan":   { enabled: true,  faction: "Jandar"  },
-    "Jotun":                       { enabled: true,  faction: "Ullar"   },
-    "Kato Katsuro":                { enabled: true,  faction: "Einar"   },
-    "Kelda":                       { enabled: true,  faction: "Jandar"  },
-    "Kenku Sneak":                 { enabled: true,  faction: "Choobar" },
-    "Khosumet":                    { enabled: true,  faction: "Utgar"   },
-    "Knights of Weston":           { enabled: true,  faction: "Jandar"  },
-    "Kozuke Samurai":              { enabled: true,  faction: "Einar"   },
-    "Krav Maga Agents":            { enabled: true,  faction: "Vydar"   },
-    "Krug":                        { enabled: true,  faction: "Utgar"   },
-    "MacDirk Warriors":            { enabled: true,  faction: "Jandar"  },
-    "Major Q10":                   { enabled: true,  faction: "Vydar"   },
-    "Major Q9":                    { enabled: true,  faction: "Vydar"   },
-    "Major X17":                   { enabled: true,  faction: "Vydar"   },
-    "Marcus Decimus":              { enabled: true,  faction: "Einar"   },
-    "Marrden Hounds":              { enabled: true,  faction: "Utgar"   },
-    "Marrden Nagrubs":             { enabled: true,  faction: "Utgar"   },
-    "Marro Drones":                { enabled: true,  faction: "Utgar"   },
-    "Marro Drudge":                { enabled: true,  faction: "Utgar"   },
-    "Marro Hive":                  { enabled: false, faction: "Utgar"   },
-    "Marro Stingers":              { enabled: true,  faction: "Utgar"   },
-    "Marro Warriors":              { enabled: true,  faction: "Utgar"   },
-    "Me-Burq-Sa":                  { enabled: true,  faction: "Utgar"   },
-    "Microcorp Agents":            { enabled: true,  faction: "Vydar"   },
-    "Mimring":                     { enabled: true,  faction: "Utgar"   },
-    "Minions of Utgar":            { enabled: true,  faction: "Utgar"   },
-    "Minutemen":                   { enabled: true,  faction: "Jandar"  },
-    "Moriko":                      { enabled: true,  faction: "Ullar"   },
-    "Morsbane":                    { enabled: true,  faction: "Ullar"   },
-    "Nakita Agents":               { enabled: true,  faction: "Vydar"   },
-    "Nathril":                     { enabled: true,  faction: "Jacob"   },
-    "Ne-Gok-Sa":                   { enabled: true,  faction: "Utgar"   },
-    "Nilfheim":                    { enabled: true,  faction: "Jandar"  },
-    "Ninjas of the Northern Wind": { enabled: true,  faction: "Einar"   },
-    "Nixy":                        { enabled: true,  faction: "Jacob"   },
-    "Obsidian Guards":             { enabled: true,  faction: "Utgar"   },
-    "Omnicron Snipers":            { enabled: true,  faction: "Jandar"  },
-    "Otonashi":                    { enabled: true,  faction: "Vydar"   },
-    "Parmenio":                    { enabled: true,  faction: "Einar"   },
-    "Raelin, 1st Edition":         { enabled: true,  faction: "Jandar"  },
-    "Raelin, 2nd Edition":         { enabled: true,  faction: "Jandar"  },
-    "Rat Bastards":                { enabled: true,  faction: "Utgar"   },
-    "Red Coats":                   { enabled: true,  faction: "Einar"   },
-    "Retiarius":                   { enabled: true,  faction: "Einar"   },
-    "Roman Archers":               { enabled: true,  faction: "Einar"   },
-    "Roman Legionnaires":          { enabled: true,  faction: "Einar"   },
-    "Sacred Band":                 { enabled: true,  faction: "Einar"   },
-    "Saylind":                     { enabled: true,  faction: "Ullar"   },
-    "Sentinels of Jandar":         { enabled: true,  faction: "Jandar"  },
-    "Sgt. Drake, 1st Edition":     { enabled: true,  faction: "Jandar"  },
-    "Sgt. Drake, 2nd Edition":     { enabled: true,  faction: "Jandar"  },
-    "Shaolin Monks":               { enabled: true,  faction: "Ullar"   },
-    "Shiori":                      { enabled: true,  faction: "Einar"   },
-    "Sir Denrick":                 { enabled: true,  faction: "Jandar"  },
-    "Sir Dupuis":                  { enabled: true,  faction: "Jandar"  },
-    "Sonic Boom":                  { enabled: false, faction: "Choobar" },
-    "Sonlen":                      { enabled: true,  faction: "Ullar"   },
-    "Spartacus":                   { enabled: true,  faction: "Einar"   },
-    "Su-Bak-Na":                   { enabled: true,  faction: "Utgar"   },
-    "Sudema":                      { enabled: true,  faction: "Vydar"   },
-    "Swog Rider":                  { enabled: true,  faction: "Utgar"   },
-    "Syvarris":                    { enabled: true,  faction: "Ullar"   },
-    "Taelord":                     { enabled: true,  faction: "Utgar"   },
-    "Tagawa Samurai":              { enabled: true,  faction: "Einar"   },
-    "Tarn Viking Warriors":        { enabled: true,  faction: "Jandar"  },
-    "Templar Cavalry":             { enabled: false, faction: "Jandar"  },
-    "Theracus":                    { enabled: true,  faction: "Ullar"   },
-    "Thorgrim":                    { enabled: true,  faction: "Jandar"  },
-    "Tor-Kul-Na":                  { enabled: false, faction: "Utgar"   },
-    "Tornak":                      { enabled: true,  faction: "Utgar"   },
-    "Ulginesh":                    { enabled: true,  faction: "Ullar"   },
-    "Valguard":                    { enabled: true,  faction: "Einar"   },
-    "Venoc Devourers":             { enabled: true,  faction: "Ullar"   },
-    "Venoc Vipers":                { enabled: true,  faction: "Ullar"   },
-    "Venoc Warlord":               { enabled: true,  faction: "Ullar"   },
-    "Veshnir":                     { enabled: true,  faction: "Ullar"   },
-    "Warriors of Ashra":           { enabled: true,  faction: "Ullar"   },
-    "Wolves of Badru":             { enabled: true,  faction: "Utgar"   },
-    "Zettian Guards":              { enabled: true,  faction: "Utgar"   }
+data Faction = Choobar | Einar | Jacob | Jandar | Ullar | Utgar | Vydar
+
+data Card = Card
+  { name      :: String
+  , isEnabled :: Boolean
+  , faction   :: Faction
   }
+
+cards :: [Card]
+cards =
+  [ Card { name: "Agent Carr",                  isEnabled: true,  faction: Vydar   }
+  , Card { name: "Airborne Elite",              isEnabled: true,  faction: Jandar  }
+  , Card { name: "Alastair MacDirk",            isEnabled: true,  faction: Jandar  }
+  , Card { name: "Anubian Wolves",              isEnabled: true,  faction: Utgar   }
+  , Card { name: "Aphotia",                     isEnabled: true,  faction: Choobar }
+  , Card { name: "Arkmer",                      isEnabled: true,  faction: Ullar   }
+  , Card { name: "Arrow Gruts",                 isEnabled: true,  faction: Utgar   }
+  , Card { name: "Aubrien Archers",             isEnabled: true,  faction: Ullar   }
+  , Card { name: "Basilisk",                    isEnabled: false, faction: Choobar }
+  , Card { name: "Blade Gruts",                 isEnabled: true,  faction: Utgar   }
+  , Card { name: "Blastatrons",                 isEnabled: true,  faction: Vydar   }
+  , Card { name: "Braxas",                      isEnabled: true,  faction: Vydar   }
+  , Card { name: "Brunak",                      isEnabled: true,  faction: Utgar   }
+  , Card { name: "Chardris",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Charos",                      isEnabled: true,  faction: Ullar   }
+  , Card { name: "Concan",                      isEnabled: true,  faction: Jandar  }
+  , Card { name: "Crixus",                      isEnabled: true,  faction: Einar   }
+  , Card { name: "Crucian",                     isEnabled: true,  faction: Choobar }
+  , Card { name: "Deadeye Dan",                 isEnabled: true,  faction: Ullar   }
+  , Card { name: "Deadwood",                    isEnabled: true,  faction: Choobar }
+  , Card { name: "Deathstalkers",               isEnabled: true,  faction: Utgar   }
+  , Card { name: "Deathwalker 7000",            isEnabled: true,  faction: Utgar   }
+  , Card { name: "Deathwalker 8000",            isEnabled: true,  faction: Utgar   }
+  , Card { name: "Deathwalker 9000",            isEnabled: true,  faction: Utgar   }
+  , Card { name: "Dumutef Guard",               isEnabled: true,  faction: Utgar   }
+  , Card { name: "Dund",                        isEnabled: true,  faction: Vydar   }
+  , Card { name: "Elemental Golems",            isEnabled: true,  faction: Vydar   }
+  , Card { name: "Elite Onyx Vipers",           isEnabled: true,  faction: Ullar   }
+  , Card { name: "Emirroon",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Festus",                      isEnabled: true,  faction: Jacob   }
+  , Card { name: "Finn",                        isEnabled: true,  faction: Jandar  }
+  , Card { name: "Firefly",                     isEnabled: true,  faction: Ullar   }
+  , Card { name: "Gladiatrons",                 isEnabled: true,  faction: Vydar   }
+  , Card { name: "Gorillinators",               isEnabled: true,  faction: Vydar   }
+  , Card { name: "Grimnak",                     isEnabled: true,  faction: Utgar   }
+  , Card { name: "Grok Riders",                 isEnabled: true,  faction: Utgar   }
+  , Card { name: "Guilty McCreech",             isEnabled: true,  faction: Einar   }
+  , Card { name: "Izumi Samurai",               isEnabled: true,  faction: Einar   }
+  , Card { name: "James Murphy",                isEnabled: true,  faction: Vydar   }
+  , Card { name: "Johnny 'Shotgun' Sullivan",   isEnabled: true,  faction: Jandar  }
+  , Card { name: "Jotun",                       isEnabled: true,  faction: Ullar   }
+  , Card { name: "Kato Katsuro",                isEnabled: true,  faction: Einar   }
+  , Card { name: "Kelda",                       isEnabled: true,  faction: Jandar  }
+  , Card { name: "Kenku Sneak",                 isEnabled: true,  faction: Choobar }
+  , Card { name: "Khosumet",                    isEnabled: true,  faction: Utgar   }
+  , Card { name: "Knights of Weston",           isEnabled: true,  faction: Jandar  }
+  , Card { name: "Kozuke Samurai",              isEnabled: true,  faction: Einar   }
+  , Card { name: "Krav Maga Agents",            isEnabled: true,  faction: Vydar   }
+  , Card { name: "Krug",                        isEnabled: true,  faction: Utgar   }
+  , Card { name: "MacDirk Warriors",            isEnabled: true,  faction: Jandar  }
+  , Card { name: "Major Q10",                   isEnabled: true,  faction: Vydar   }
+  , Card { name: "Major Q9",                    isEnabled: true,  faction: Vydar   }
+  , Card { name: "Major X17",                   isEnabled: true,  faction: Vydar   }
+  , Card { name: "Marcus Decimus",              isEnabled: true,  faction: Einar   }
+  , Card { name: "Marrden Hounds",              isEnabled: true,  faction: Utgar   }
+  , Card { name: "Marrden Nagrubs",             isEnabled: true,  faction: Utgar   }
+  , Card { name: "Marro Drones",                isEnabled: true,  faction: Utgar   }
+  , Card { name: "Marro Drudge",                isEnabled: true,  faction: Utgar   }
+  , Card { name: "Marro Hive",                  isEnabled: false, faction: Utgar   }
+  , Card { name: "Marro Stingers",              isEnabled: true,  faction: Utgar   }
+  , Card { name: "Marro Warriors",              isEnabled: true,  faction: Utgar   }
+  , Card { name: "Me-Burq-Sa",                  isEnabled: true,  faction: Utgar   }
+  , Card { name: "Microcorp Agents",            isEnabled: true,  faction: Vydar   }
+  , Card { name: "Mimring",                     isEnabled: true,  faction: Utgar   }
+  , Card { name: "Minions of Utgar",            isEnabled: true,  faction: Utgar   }
+  , Card { name: "Minutemen",                   isEnabled: true,  faction: Jandar  }
+  , Card { name: "Moriko",                      isEnabled: true,  faction: Ullar   }
+  , Card { name: "Morsbane",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Nakita Agents",               isEnabled: true,  faction: Vydar   }
+  , Card { name: "Nathril",                     isEnabled: true,  faction: Jacob   }
+  , Card { name: "Ne-Gok-Sa",                   isEnabled: true,  faction: Utgar   }
+  , Card { name: "Nilfheim",                    isEnabled: true,  faction: Jandar  }
+  , Card { name: "Ninjas of the Northern Wind", isEnabled: true,  faction: Einar   }
+  , Card { name: "Nixy",                        isEnabled: true,  faction: Jacob   }
+  , Card { name: "Obsidian Guards",             isEnabled: true,  faction: Utgar   }
+  , Card { name: "Omnicron Snipers",            isEnabled: true,  faction: Jandar  }
+  , Card { name: "Otonashi",                    isEnabled: true,  faction: Vydar   }
+  , Card { name: "Parmenio",                    isEnabled: true,  faction: Einar   }
+  , Card { name: "Raelin, 1st Edition",         isEnabled: true,  faction: Jandar  }
+  , Card { name: "Raelin, 2nd Edition",         isEnabled: true,  faction: Jandar  }
+  , Card { name: "Rat Bastards",                isEnabled: true,  faction: Utgar   }
+  , Card { name: "Red Coats",                   isEnabled: true,  faction: Einar   }
+  , Card { name: "Retiarius",                   isEnabled: true,  faction: Einar   }
+  , Card { name: "Roman Archers",               isEnabled: true,  faction: Einar   }
+  , Card { name: "Roman Legionnaires",          isEnabled: true,  faction: Einar   }
+  , Card { name: "Sacred Band",                 isEnabled: true,  faction: Einar   }
+  , Card { name: "Saylind",                     isEnabled: true,  faction: Ullar   }
+  , Card { name: "Sentinels of Jandar",         isEnabled: true,  faction: Jandar  }
+  , Card { name: "Sgt. Drake, 1st Edition",     isEnabled: true,  faction: Jandar  }
+  , Card { name: "Sgt. Drake, 2nd Edition",     isEnabled: true,  faction: Jandar  }
+  , Card { name: "Shaolin Monks",               isEnabled: true,  faction: Ullar   }
+  , Card { name: "Shiori",                      isEnabled: true,  faction: Einar   }
+  , Card { name: "Sir Denrick",                 isEnabled: true,  faction: Jandar  }
+  , Card { name: "Sir Dupuis",                  isEnabled: true,  faction: Jandar  }
+  , Card { name: "Sonic Boom",                  isEnabled: false, faction: Choobar }
+  , Card { name: "Sonlen",                      isEnabled: true,  faction: Ullar   }
+  , Card { name: "Spartacus",                   isEnabled: true,  faction: Einar   }
+  , Card { name: "Su-Bak-Na",                   isEnabled: true,  faction: Utgar   }
+  , Card { name: "Sudema",                      isEnabled: true,  faction: Vydar   }
+  , Card { name: "Swog Rider",                  isEnabled: true,  faction: Utgar   }
+  , Card { name: "Syvarris",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Taelord",                     isEnabled: true,  faction: Utgar   }
+  , Card { name: "Tagawa Samurai",              isEnabled: true,  faction: Einar   }
+  , Card { name: "Tarn Viking Warriors",        isEnabled: true,  faction: Jandar  }
+  , Card { name: "Templar Cavalry",             isEnabled: false, faction: Jandar  }
+  , Card { name: "Theracus",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Thorgrim",                    isEnabled: true,  faction: Jandar  }
+  , Card { name: "Tor-Kul-Na",                  isEnabled: false, faction: Utgar   }
+  , Card { name: "Tornak",                      isEnabled: true,  faction: Utgar   }
+  , Card { name: "Ulginesh",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Valguard",                    isEnabled: true,  faction: Einar   }
+  , Card { name: "Venoc Devourers",             isEnabled: true,  faction: Ullar   }
+  , Card { name: "Venoc Vipers",                isEnabled: true,  faction: Ullar   }
+  , Card { name: "Venoc Warlord",               isEnabled: true,  faction: Ullar   }
+  , Card { name: "Veshnir",                     isEnabled: true,  faction: Ullar   }
+  , Card { name: "Warriors of Ashra",           isEnabled: true,  faction: Ullar   }
+  , Card { name: "Wolves of Badru",             isEnabled: true,  faction: Utgar   }
+  , Card { name: "Zettian Guards",              isEnabled: true,  faction: Utgar   }
+  ]
