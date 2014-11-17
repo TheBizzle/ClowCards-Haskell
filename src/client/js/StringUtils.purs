@@ -1,4 +1,4 @@
-module StringUtils (slugify, stripMargin, stripMarginSimple, toLowerCase) where
+module StringUtils (slugify, stripMargin, stripMarginSimple) where
 
 import Data.Foldable(Foldable, foldl)
 import Data.String(toLower)
@@ -21,13 +21,3 @@ stripMargin str delim = replace (regex r flags) "\n" str
 
 stripMarginSimple :: String -> String
 stripMarginSimple = flip stripMargin "\\|"
-
--- .toLowerCase()
-foreign import toLowerCase
-  """
-  function toLowerCase(s) {
-    return function() {
-      return s.toLowerCase();
-    };
-  }
-  """ :: String -> String

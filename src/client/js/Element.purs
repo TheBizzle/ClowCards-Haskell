@@ -3,9 +3,11 @@ module Element (genCardCheckbox, genCardEntryColumn, genPlayerRow) where
 import Control.Monad.Eff(Eff(..))
 import Control.Monad.JQuery(append, create, find, JQuery(..), remove, removeClass)
 
+import Data.String(toLower)
+
 import DOM(DOM(..))
 import JQueryUI(attrStr, click, load, replaceWith)
-import StringUtils(slugify, toLowerCase)
+import StringUtils(slugify)
 
 (|>) a f = f a
 
@@ -90,7 +92,7 @@ genCardImage id url faction = do
     withImg <- append imgJQ jq
     append animJQ withImg
   where
-    bgClass = faction |> (toLowerCase >>> (\x -> x ++ "-backgrounded"))
+    bgClass = faction |> (toLower >>> (\x -> x ++ "-backgrounded"))
 
 genCardText :: forall eff. String -> Eff (dom :: DOM | eff) JQuery
 genCardText text = create html
