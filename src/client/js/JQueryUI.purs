@@ -170,3 +170,15 @@ foreign import attrStr
     };
   }
   """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) String
+
+-- .children(str)
+foreign import children
+  """
+  function children(str) {
+    return function(ob) {
+      return function () {
+        return ob.children(str);
+      };
+    };
+  }
+  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
