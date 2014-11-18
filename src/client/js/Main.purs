@@ -82,6 +82,13 @@ innerClick this = do
   refreshButton btn
   change btn
 
+filterM :: forall a m. (Monad m) => (a -> m Boolean) -> [a] -> m [a]
+filterM _ []     = return []
+filterM p (x:xs) = do
+   pred <- p x
+   ys   <- filterM p xs
+   return $ if pred then x:ys else ys
+
 byID :: forall eff. String -> Eff (dom :: DOM | eff) JQuery
 byID id = select $ "#" ++ id
 
