@@ -3,7 +3,11 @@ module Main (main) where
 import Control.Monad.Eff(Eff(..))
 import Control.Monad.JQuery(append, css, JQuery(..), ready, select)
 
+import Data.Array(filter)
 import Data.Foldable(for_)
+import Data.Map(fromList, lookup)
+import Data.Maybe(Maybe(..))
+import Data.Tuple(Tuple(..))
 
 import AppState(AppState(..))
 import Cards(Card(..), cards)
@@ -81,6 +85,32 @@ innerClick this = do
   flipChecked btn
   refreshButton btn
   change btn
+
+findEnabledCards :: forall eff. JQuery -> Eff (dom :: DOM | eff) [Card]
+findEnabledCards cardHolder = do
+  labels <- children "label" cardHolder
+  pairs  <- mapLabelsToPairs labels
+  let labelEnabledMap = fromList pairs
+  return $ filter (checkCardIsEnabled labelEnabledMap) cards
+    where
+      checkCardIsEnabled lookupMap (Card { name = name }) = (lookup name lookupMap) == Just true
+
+-- .map(...).get()
+foreign import mapLabelsToPairs
+  """
+  function button(ob) {
+    return function() {
+      var arr = ob.map(function() {
+        var elem      = jQuery(this);
+        var id        = elem.attr("for");
+        var name      = elem.text();
+        var isEnabled = $("#" + id)[0].checked;
+        return PS.Data_Tuple.create(name)(isEnabled);
+      }).get();
+      return arr;
+    };
+  }
+  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) [Tuple String Boolean]
 
 filterM :: forall a m. (Monad m) => (a -> m Boolean) -> [a] -> m [a]
 filterM _ []     = return []
