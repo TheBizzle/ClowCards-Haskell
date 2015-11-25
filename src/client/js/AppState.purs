@@ -1,6 +1,6 @@
 module AppState(AppState(..)) where
 
-import Control.Monad.JQuery(JQuery(..))
+import Control.Monad.Eff.JQuery(JQuery())
 
 data AppState = AppState
   { adderButton    :: JQuery
@@ -9,5 +9,5 @@ data AppState = AppState
   , cardNumSpinner :: JQuery
   , nameInput      :: JQuery
   , pickButton     :: JQuery
-  , playerNums     :: [Number]
+  , playerNums     :: Array Number
   }

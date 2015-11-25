@@ -1,20 +1,23 @@
 module Main (main) where
 
-import Control.Monad.Eff(Eff(..))
-import Control.Monad.JQuery(append, css, JQuery(..), ready, select)
+import AppState(AppState(..))
+import Cards(Card(..), cards)
+import DOM(DOM())
+import Element(genCardCheckbox)
+import Prelude(($), (++), (==), (>>=), (>>>), bind, flip, Monad, return)
+import JQueryUI(accordion, attrStr, button, buttonset, change, children, click, each, flipChecked, mapLabelsToPairs, refreshButton, siblings, spinner, tabs, val)
+
+import Control.Monad.Eff(Eff())
+import Control.Monad.Eff.JQuery(append, css, JQuery(), ready, select)
 
 import Data.Array(filter)
 import Data.Foldable(for_)
-import Data.Map(fromList, lookup)
 import Data.Maybe(Maybe(..))
-import Data.Tuple(Tuple(..))
 
-import AppState(AppState(..))
-import Cards(Card(..), cards)
-import DOM(DOM(..))
-import Element(genCardCheckbox)
-import JQueryUI(accordion, attrStr, button, buttonset, change, children, click, each, flipChecked, refreshButton, siblings, spinner, tabs, val)
+import qualified Data.List as List
+import qualified Data.Map  as Map
 
+main :: forall eff. Eff (dom :: DOM | eff) JQuery
 main = ready $ do
   initJQUI
   AppState { cardHolder = cardHolder } <- initState
@@ -86,40 +89,17 @@ innerClick this = do
   refreshButton btn
   change btn
 
-findEnabledCards :: forall eff. JQuery -> Eff (dom :: DOM | eff) [Card]
+findEnabledCards :: forall eff. JQuery -> Eff (dom :: DOM | eff) (Array Card)
 findEnabledCards cardHolder = do
   labels <- children "label" cardHolder
   pairs  <- mapLabelsToPairs labels
-  let labelEnabledMap = fromList pairs
+  let labelEnabledMap = pairs |> (List.toList >>> Map.fromList)
   return $ filter (checkCardIsEnabled labelEnabledMap) cards
     where
-      checkCardIsEnabled lookupMap (Card { name = name }) = (lookup name lookupMap) == Just true
-
--- .map(...).get()
-foreign import mapLabelsToPairs
-  """
-  function button(ob) {
-    return function() {
-      var arr = ob.map(function() {
-        var elem      = jQuery(this);
-        var id        = elem.attr("for");
-        var name      = elem.text();
-        var isEnabled = $("#" + id)[0].checked;
-        return PS.Data_Tuple.create(name)(isEnabled);
-      }).get();
-      return arr;
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) [Tuple String Boolean]
-
-filterM :: forall a m. (Monad m) => (a -> m Boolean) -> [a] -> m [a]
-filterM _ []     = return []
-filterM p (x:xs) = do
-   pred <- p x
-   ys   <- filterM p xs
-   return $ if pred then x:ys else ys
+      checkCardIsEnabled lookupMap (Card { name = name }) = (Map.lookup name lookupMap) == Just true
 
 byID :: forall eff. String -> Eff (dom :: DOM | eff) JQuery
 byID id = select $ "#" ++ id
 
+(|>) :: forall a b. a -> (a -> b) -> b
 (|>) a f = f a

@@ -1,8 +1,10 @@
 module StringUtils (slugify, stripMargin, stripMarginSimple) where
 
+import Prelude((++), flip)
+
 import Data.Foldable(Foldable, foldl)
 import Data.String(toLower)
-import Data.String.Regex(parseFlags, regex, Regex(..), replace)
+import Data.String.Regex(parseFlags, regex, replace)
 import Data.Tuple(Tuple(..))
 
 slugify :: String -> String

@@ -1,14 +1,16 @@
 module Element (genCardCheckbox, genCardEntryColumn, genPlayerRow) where
 
-import Control.Monad.Eff(Eff(..))
-import Control.Monad.JQuery(append, create, find, JQuery(..), remove, removeClass)
+import DOM(DOM())
+import JQueryUI(attrStr, click, load, replaceWith)
+import Prelude(($), (++), (>>>), bind)
+import StringUtils(slugify)
+
+import Control.Monad.Eff(Eff())
+import Control.Monad.Eff.JQuery(append, create, find, JQuery(), remove, removeClass)
 
 import Data.String(toLower, trim)
 
-import DOM(DOM(..))
-import JQueryUI(attrStr, click, load, replaceWith)
-import StringUtils(slugify)
-
+(|>) :: forall a b. a -> (a -> b) -> b
 (|>) a f = f a
 
 genCardCheckbox :: forall eff. String -> Boolean -> Eff (dom :: DOM | eff) JQuery

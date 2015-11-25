@@ -1,7 +1,9 @@
 module CardIterator where
 
+import Prelude(Unit(), unit)
+
 type Card = Unit
 type CardIterator = Unit
 
-create :: [Card] -> CardIterator
+create :: (Array Card) -> CardIterator
 create _ = unit

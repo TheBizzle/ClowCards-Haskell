@@ -2,7 +2,6 @@ var gulp = require('gulp');
 
 var del        = require('del');
 var less       = require('gulp-less');
-var purescript = require('gulp-purescript');
 var rename     = require('gulp-rename');
 
 gulp.task('clean', function(cb) {
@@ -20,13 +19,6 @@ gulp.task('less', function() {
              .pipe(gulp.dest("target/stylesheets"));
 });
 
-gulp.task('purescript', function() {
-  return gulp.src(["bower_components/**/src/**/*.purs", "src/client/js/**/*.purs"])
-             .pipe(purescript.psc({main: true}))
-             .pipe(rename(function (path) { path.basename = "index" }))
-             .pipe(gulp.dest("target/js"));
-});
-
 gulp.task('jquery', function() {
   return gulp.src("node_modules/jquery/jquery.min.js")
              .pipe(gulp.dest("target/js"));
@@ -38,4 +30,4 @@ gulp.task('jquery-ui', function() {
              .pipe(gulp.dest("target/js"));
 });
 
-gulp.task('build', ['stylesheets', 'less', 'purescript', 'jquery', 'jquery-ui']);
+gulp.task('build', ['stylesheets', 'less', 'jquery', 'jquery-ui']);

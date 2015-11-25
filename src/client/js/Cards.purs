@@ -8,7 +8,7 @@ data Card = Card
   , faction   :: Faction
   }
 
-cards :: [Card]
+cards :: Array Card
 cards =
   [ Card { name: "Agent Carr",                  isEnabled: true,  faction: Vydar   }
   , Card { name: "Airborne Elite",              isEnabled: true,  faction: Jandar  }

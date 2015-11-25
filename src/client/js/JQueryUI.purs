@@ -1,184 +1,60 @@
 module JQueryUI where
 
-import Control.Monad.Eff(Eff(..))
-import Control.Monad.JQuery(JQuery(..))
+import DOM(DOM())
+import Prelude(Unit())
 
-import DOM(DOM(..))
+import Control.Monad.Eff(Eff())
+import Control.Monad.Eff.JQuery(JQuery())
+
+import Data.Tuple(Tuple(..))
 
 -- .accordion(config)
-foreign import accordion
-  """
-  function accordion(config) {
-    return function(ob) {
-      return function() {
-        return ob.accordion(config);
-      };
-    };
-  }
-  """ :: forall eff r. { | r } -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import accordion :: forall eff r. { | r } -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .button()
-foreign import button
-  """
-  function button(ob) {
-    return function() {
-      return ob.button();
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import button :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .buttonset()
-foreign import buttonset
-  """
-  function buttonset(ob) {
-    return function() {
-      return ob.buttonset();
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import buttonset :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .change()
-foreign import change
-  """
-  function change(ob) {
-    return function() {
-      return ob.change();
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import change :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .click(f)
-foreign import click
-  """
-  function click(f) {
-    return function(ob) {
-      return function() {
-        return ob.click(function () { return f(jQuery(this))(); });
-      };
-    };
-  }
-  """ :: forall eff a. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import click :: forall eff. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .each(f)
-foreign import each
-  """
-  function each(f) {
-    return function(ob) {
-      return function() {
-        return ob.each(function() { return f(jQuery(this))(); });
-      };
-    };
-  }
-  """ :: forall eff a. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import each :: forall eff. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- x[0].checked = !x[0].checked
-foreign import flipChecked
-  """
-  function flipChecked(ob) {
-    return function () {
-      ob[0].checked = !ob[0].checked;
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
+foreign import flipChecked :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
 
 -- .load(f)
-foreign import load
-  """
-  function load(f) {
-    return function (ob) {
-      return function () {
-        return ob.load(function() { return f(jQuery(this)); });
-      };
-    }
-  }
-  """ :: forall eff. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import load :: forall eff. (JQuery -> Eff (dom :: DOM | eff) JQuery) -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .button('refresh')
-foreign import refreshButton
-  """
-  function refreshButton(ob) {
-    return function() {
-      ob.button('refresh');
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
+foreign import refreshButton :: forall eff. JQuery -> Eff (dom :: DOM | eff) Unit
 
 -- .replaceWith(elem)
-foreign import replaceWith
-  """
-  function replaceWith(elem) {
-    return function (ob) {
-      return function () {
-        return ob.replaceWith(elem);
-      };
-    }
-  }
-  """ :: forall eff. JQuery -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import replaceWith :: forall eff. JQuery -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .siblings(filterStr)
-foreign import siblings
-  """
-  function siblings(filterStr) {
-    return function(ob) {
-      return function() {
-        return ob.siblings(filterStr);
-      };
-    };
-  }
-  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import siblings :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .spinner()
-foreign import spinner
-  """
-  function spinner(ob) {
-    return function() {
-      return ob.spinner();
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import spinner :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .tabs()
-foreign import tabs
-  """
-  function tabs(ob) {
-    return function() {
-      return ob.tabs();
-    };
-  }
-  """ :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import tabs :: forall eff. JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .val(newVal)
-foreign import val
-  """
-  function val(newVal) {
-    return function(ob) {
-      return function() {
-        return ob.val(newVal);
-      };
-    };
-  }
-  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import val :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
 
 -- .attr(str)
-foreign import attrStr
-  """
-  function attrStr(str) {
-    return function(ob) {
-      return function () {
-        return ob.attr(str);
-      };
-    };
-  }
-  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) String
+foreign import attrStr :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) String
 
 -- .children(str)
-foreign import children
-  """
-  function children(str) {
-    return function(ob) {
-      return function () {
-        return ob.children(str);
-      };
-    };
-  }
-  """ :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
+foreign import children :: forall eff. String -> JQuery -> Eff (dom :: DOM | eff) JQuery
+
+-- .map(...).get()
+foreign import mapLabelsToPairs :: forall eff. JQuery -> Eff (dom :: DOM | eff) (Array (Tuple String Boolean))
