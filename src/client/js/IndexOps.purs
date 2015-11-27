@@ -42,7 +42,7 @@ genCards cardCount playerCount cards =
 --        forE 0 cardCount $ const genCardForEachPlayer
 --      else
 --        alert msg
---    maxCards   = length $ filter (\Card { isEnabled = isEnabled } -> isEnabled == true) cards
+--    maxCards   = length $ filter (\Card { isEnabled = isEnabled } -> isEnabled) cards
 --    totalCards = playerCount * cardCount
 --    msg        = """
 --                 You attempted to generate """ <> (show totalCards) <> """ cards, but there are only """ <> (show maxCards) <> """ available.
