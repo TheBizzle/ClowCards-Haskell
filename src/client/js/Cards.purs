@@ -26,15 +26,18 @@ cards =
   , Card { name: "Alastair MacDirk",            isEnabled: true,  faction: Jandar  }
   , Card { name: "Anubian Wolves",              isEnabled: true,  faction: Utgar   }
   , Card { name: "Aphotia",                     isEnabled: true,  faction: Choobar }
+  , Card { name: "Ariella",                     isEnabled: true,  faction: Ullar   }
   , Card { name: "Arkmer",                      isEnabled: true,  faction: Ullar   }
   , Card { name: "Arrow Gruts",                 isEnabled: true,  faction: Utgar   }
   , Card { name: "Aubrien Archers",             isEnabled: true,  faction: Ullar   }
   , Card { name: "Basilisk",                    isEnabled: false, faction: Choobar }
+  , Card { name: "Belthasar",                   isEnabled: true,  faction: Choobar }
   , Card { name: "Blade Gruts",                 isEnabled: true,  faction: Utgar   }
   , Card { name: "Blastatrons",                 isEnabled: true,  faction: Vydar   }
   , Card { name: "Braxas",                      isEnabled: true,  faction: Vydar   }
   , Card { name: "Brunak",                      isEnabled: true,  faction: Utgar   }
   , Card { name: "Chardris",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Charon",                      isEnabled: false, faction: Jacob   }
   , Card { name: "Charos",                      isEnabled: true,  faction: Ullar   }
   , Card { name: "Concan",                      isEnabled: true,  faction: Jandar  }
   , Card { name: "Crixus",                      isEnabled: true,  faction: Einar   }
@@ -50,9 +53,12 @@ cards =
   , Card { name: "Elemental Golems",            isEnabled: true,  faction: Vydar   }
   , Card { name: "Elite Onyx Vipers",           isEnabled: true,  faction: Ullar   }
   , Card { name: "Emirroon",                    isEnabled: true,  faction: Ullar   }
+  , Card { name: "Fenril",                      isEnabled: false, faction: Jacob   }
   , Card { name: "Festus",                      isEnabled: true,  faction: Jacob   }
   , Card { name: "Finn",                        isEnabled: true,  faction: Jandar  }
   , Card { name: "Firefly",                     isEnabled: true,  faction: Ullar   }
+  , Card { name: "Frank Farmer",                isEnabled: false, faction: Vydar   }
+  , Card { name: "Galf",                        isEnabled: false, faction: Choobar }
   , Card { name: "Gladiatrons",                 isEnabled: true,  faction: Vydar   }
   , Card { name: "Gorillinators",               isEnabled: true,  faction: Vydar   }
   , Card { name: "Grimnak",                     isEnabled: true,  faction: Utgar   }
@@ -70,7 +76,9 @@ cards =
   , Card { name: "Kozuke Samurai",              isEnabled: true,  faction: Einar   }
   , Card { name: "Krav Maga Agents",            isEnabled: true,  faction: Vydar   }
   , Card { name: "Krug",                        isEnabled: true,  faction: Utgar   }
+  , Card { name: "Lilith",                      isEnabled: true,  faction: Choobar }
   , Card { name: "MacDirk Warriors",            isEnabled: true,  faction: Jandar  }
+  , Card { name: "Maggotbrain Zombies",         isEnabled: false, faction: Utgar   }
   , Card { name: "Major Q10",                   isEnabled: true,  faction: Vydar   }
   , Card { name: "Major Q9",                    isEnabled: true,  faction: Vydar   }
   , Card { name: "Major X17",                   isEnabled: true,  faction: Vydar   }
@@ -99,6 +107,7 @@ cards =
   , Card { name: "Omnicron Snipers",            isEnabled: true,  faction: Jandar  }
   , Card { name: "Otonashi",                    isEnabled: true,  faction: Vydar   }
   , Card { name: "Parmenio",                    isEnabled: true,  faction: Einar   }
+  , Card { name: "R-66Y",                       isEnabled: true,  faction: Ullar   }
   , Card { name: "Raelin, 1st Edition",         isEnabled: true,  faction: Jandar  }
   , Card { name: "Raelin, 2nd Edition",         isEnabled: true,  faction: Jandar  }
   , Card { name: "Rat Bastards",                isEnabled: true,  faction: Utgar   }
@@ -111,10 +120,12 @@ cards =
   , Card { name: "Sentinels of Jandar",         isEnabled: true,  faction: Jandar  }
   , Card { name: "Sgt. Drake, 1st Edition",     isEnabled: true,  faction: Jandar  }
   , Card { name: "Sgt. Drake, 2nd Edition",     isEnabled: true,  faction: Jandar  }
+  , Card { name: "Shaolin Ascetic",             isEnabled: true,  faction: Ullar   }
   , Card { name: "Shaolin Monks",               isEnabled: true,  faction: Ullar   }
   , Card { name: "Shiori",                      isEnabled: true,  faction: Einar   }
   , Card { name: "Sir Denrick",                 isEnabled: true,  faction: Jandar  }
   , Card { name: "Sir Dupuis",                  isEnabled: true,  faction: Jandar  }
+  , Card { name: "Slimeclaw",                   isEnabled: true,  faction: Vydar   }
   , Card { name: "Sonic Boom",                  isEnabled: false, faction: Choobar }
   , Card { name: "Sonlen",                      isEnabled: true,  faction: Ullar   }
   , Card { name: "Spartacus",                   isEnabled: true,  faction: Einar   }
@@ -125,6 +136,7 @@ cards =
   , Card { name: "Taelord",                     isEnabled: true,  faction: Utgar   }
   , Card { name: "Tagawa Samurai",              isEnabled: true,  faction: Einar   }
   , Card { name: "Tarn Viking Warriors",        isEnabled: true,  faction: Jandar  }
+  , Card { name: "Tarsus",                      isEnabled: true,  faction: Ullar   }
   , Card { name: "Templar Cavalry",             isEnabled: false, faction: Jandar  }
   , Card { name: "Theracus",                    isEnabled: true,  faction: Ullar   }
   , Card { name: "Thorgrim",                    isEnabled: true,  faction: Jandar  }
@@ -135,6 +147,7 @@ cards =
   , Card { name: "Venoc Devourers",             isEnabled: true,  faction: Ullar   }
   , Card { name: "Venoc Vipers",                isEnabled: true,  faction: Ullar   }
   , Card { name: "Venoc Warlord",               isEnabled: true,  faction: Ullar   }
+  , Card { name: "Venomancer",                  isEnabled: true,  faction: Ullar   }
   , Card { name: "Veshnir",                     isEnabled: true,  faction: Ullar   }
   , Card { name: "Warriors of Ashra",           isEnabled: true,  faction: Ullar   }
   , Card { name: "Wolves of Badru",             isEnabled: true,  faction: Utgar   }
