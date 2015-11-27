@@ -6,7 +6,7 @@ import Distribution.Simple.Setup
 import System.Process
 
 main :: IO ()
-main = defaultMainWithHooks simpleUserHooks { buildHook = buildJS, cleanHook = cleanJS }
+main = defaultMainWithHooks simpleUserHooks { buildHook = buildJS }
 
 buildJS :: PackageDescription -> LocalBuildInfo -> UserHooks -> BuildFlags -> IO ()
 buildJS a b c d = do
@@ -14,11 +14,5 @@ buildJS a b c d = do
   readProcess "bower" ["update"]  []
   readProcess "gulp"  ["build"]   []
   indexJS <- readProcess "pulp" ["browserify"] []
-  writeFile "target/js/index.js" indexJS
+  writeFile "./target/js/index.js" indexJS
   (buildHook simpleUserHooks) a b c d
-
-cleanJS :: PackageDescription -> () -> UserHooks -> CleanFlags -> IO ()
-cleanJS _ _ _ _ = do
-  readProcess "gulp" ["clean"] []
-  readProcess "rm"   ["-rf", "./node_modules/", "./bower_components/"] []
-  return ()

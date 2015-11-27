@@ -1,8 +1,8 @@
 module Element (genCardCheckbox, genCardEntryColumn, genPlayerRow) where
 
 import DOM(DOM())
-import JQueryUI(attrStr, click, load, replaceWith)
-import Prelude(($), (++), (>>>), bind)
+import JQueryUI(attrStr, load, replaceWith)
+import Prelude(($), (++), (>>>), bind, Unit())
 import StringUtils(slugify)
 
 import Control.Monad.Eff(Eff())
@@ -30,42 +30,45 @@ genCardEntryColumn name id url faction = do
     cardEntry <- genCardEntry name id url faction
     append cardEntry column
 
-genPlayerRow :: forall eff. String -> String -> String -> (JQuery -> Eff (dom :: DOM| eff) JQuery) -> Eff (dom :: DOM | eff) JQuery
-genPlayerRow name id imgID onClickF = do
-    imgJQ          <- create imgHTML
-    clickableImgJQ <- click onClickF imgJQ
-    elemJQ         <- create elemHTML
-    findAndReplace ".placeholder" clickableImgJQ elemJQ
-  where
-    imgHTML      = "<img id='" ++ imgID ++ "' src='/assets/images/index/priority/simple-x.png' class='player-button'>"
-    elemHTML = trim $
-      """
-      <table id='""" ++ id ++ """' class="player-table round-bordered card-row has-headroom">
-        <tr>
-          <td class="player-content">
-            <table>
-              <tr>
-                <td>
-                  <span class="player-name">""" ++ name ++ """</span>
-                </td>
-                <td>
-                  <div class="placeholder">
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td>
-            <div class="row-divider"></div>
-          </td>
-          <td class="row-content">
-            <table>
-              <tr class="row-content-row">
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
-      """
+-- Needs translation
+foreign import genPlayerRow :: forall clickEff eff. String -> String -> String -> (Unit -> Eff (clickEff) Unit) -> Eff (dom :: DOM | eff) JQuery
+
+--genPlayerRow :: forall eff. String -> String -> String -> (JQuery -> Click -> Eff (dom :: DOM | eff) JQuery) -> Eff (dom :: DOM | eff) JQuery
+--genPlayerRow name id imgID onClickF = do
+--    imgJQ          <- create imgHTML
+--    clickableImgJQ <- click  onClickF imgJQ
+--    elemJQ         <- create elemHTML
+--    findAndReplace ".placeholder" clickableImgJQ elemJQ
+--  where
+--    imgHTML      = "<img id='" ++ imgID ++ "' src='/static/images/index/priority/simple-x.png' class='player-button'>"
+--    elemHTML = trim $
+--      """
+--      <table id='""" ++ id ++ """' class="player-table round-bordered card-row has-headroom">
+--        <tr>
+--          <td class="player-content">
+--            <table>
+--              <tr>
+--                <td>
+--                  <span class="player-name">""" ++ name ++ """</span>
+--                </td>
+--                <td>
+--                  <div class="placeholder">
+--                </td>
+--              </tr>
+--            </table>
+--          </td>
+--          <td>
+--            <div class="row-divider"></div>
+--          </td>
+--          <td class="row-content">
+--            <table>
+--              <tr class="row-content-row">
+--              </tr>
+--            </table>
+--          </td>
+--        </tr>
+--      </table>
+--      """
 
 genCardEntry :: forall eff. String -> String -> String -> String -> Eff (dom :: DOM | eff) JQuery
 genCardEntry name id url faction = do

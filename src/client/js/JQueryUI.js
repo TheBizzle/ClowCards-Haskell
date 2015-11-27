@@ -34,14 +34,22 @@ exports.change =
     };
   };
 
-exports.click =
+exports.change1 =
   function(f) {
     return function(ob) {
       return function() {
-        return ob.click(function () { return f(jQuery(this))(); });
+        return ob.change(function() { return f(jQuery(this))(); });
       };
     };
   };
+
+exports.click =
+  function(f) {
+    return function () {
+      return ob.click(function(x) { return f(jQuery(this))(x); });
+    };
+  };
+
 
 exports.each =
   function(f) {
@@ -135,6 +143,43 @@ exports.children =
     };
   };
 
+exports.insertBefore =
+  function(elem) {
+    return function(ob) {
+      return function () {
+        return ob.insertBefore(elem);
+      };
+    };
+  };
+
+exports.focus =
+  function focus(f) {
+    return function () {
+      return ob.focus(function(x) { return f(jQuery(this))(x); });
+    };
+  };
+
+exports.keypress =
+  function keypress(f) {
+    return function () {
+      return ob.keypress(function(x) { return f(jQuery(this))(x); });
+    };
+  };
+
+exports.keyup =
+  function keyup(f) {
+    return function () {
+      return ob.keyup(function(x) { return f(jQuery(this))(x); });
+    };
+  };
+
+exports.unfocus =
+  function unfocus(f) {
+    return function () {
+      return ob.unfocus(function(x) { return f(jQuery(this))(x); });
+    };
+  };
+
 exports.mapLabelsToPairs =
   function(ob) {
     return function() {
@@ -143,7 +188,7 @@ exports.mapLabelsToPairs =
         var id        = elem.attr("for");
         var name      = elem.text();
         var isEnabled = $("#" + id)[0].checked;
-        return PS.Data_Tuple.create(name)(isEnabled);
+        return new require('Data.Tuple').Tuple(name, isEnabled);
       }).get();
       return arr;
     };

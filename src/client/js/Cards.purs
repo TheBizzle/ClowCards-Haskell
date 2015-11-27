@@ -1,6 +1,17 @@
 module Cards(Card(..), cards, Faction(..)) where
 
+import Prelude(Show)
+
 data Faction = Choobar | Einar | Jacob | Jandar | Ullar | Utgar | Vydar
+
+instance showFaction :: Show Faction where
+  show Choobar = "choobar"
+  show Einar   = "einar"
+  show Jacob   = "jacob"
+  show Jandar  = "jandar"
+  show Ullar   = "ullar"
+  show Utgar   = "utgar"
+  show Vydar   = "vydar"
 
 data Card = Card
   { name      :: String
